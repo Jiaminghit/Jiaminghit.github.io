@@ -2,22 +2,29 @@
 layout: homepage
 ---
 
-## About Me
+## 关于我
 
-I am a Ph.D. student at ...
+你好，我是 **杨佳明**，目前学习领域为 **智能感知，三维视觉**。
 
-## Research Interests
+我主要关注 **自动驾驶领域 与 3DGS相关技术**。我喜欢通过技术、设计或研究解决实际问题，目前也在寻找有关 **AI开放岗位** 的交流与合作机会。
 
-- **Computer Vision:** image recognition, image generation, video captioning
-- **Machine Learning:** meta-learning, incremental learning, transfer learning
+## 经历
 
-## News
+- **上海赛力斯凤凰科技公司 Seres Shanghai**，2026.6 - 至今
+  负责**智驾数据平台**构建流程中**三维自动标注算法**的**2D 质检功能**开发
+  
+- **三维重建 与 3DGS**，2025.10 - 至今
+  跟踪3DGS相关研究动向，重点**前馈式三维重建**与**三维语义分割**的相关研究工作
 
-- **[Feb. 2020]** Our paper about incremental learning is accepted to CVPR 2020.
-- **[Feb. 2020]** We will host the ACM Multimedia Asia 2020 conference in Singapore!
-- **[Sept. 2019]** Our paper about few-shot learning is accepted to NeurIPS 2019.
-- **[Mar. 2019]** Our paper about few-shot learning is accepted to CVPR 2019.
+- **YOLO系目标检测**， 2023.10 - 至今
+  重点关注YOLO系目标检测算法在无人机航拍视角下的应用
 
-{% include_relative _includes/publications.md %}
+## 技能
+- 熟练使用Vibe Coding，具备流程性开发经验；
+- 熟悉 Python 与 C++；
+- 语言：中文、英文；
 
-{% include_relative _includes/services.md %}
+## 联系我
+
+欢迎通过 [电子邮件](jiamingyang_hit@163.com) 或
+[GitHub](https://github.com/Jiaminghit) 与我联系。
