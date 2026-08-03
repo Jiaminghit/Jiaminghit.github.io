@@ -21,8 +21,10 @@ layout: homepage
     5. **自动质检与可见性判定：** 设计未匹配 3D 目标的 LiDAR 深度可见性判断：构建相机视角深度图，结合目标近端深度、遮挡点占比和前景框覆盖关系，区分 ROI 外目标（`out`）、遮挡导致的未匹配（`occlusion`）和可见但无 2D 支持的疑似误检（`misdetect`）。
     6. **标注结果闭环：** 设计 ghost 2D 标注与真实 3D 标注的合并协议：将匹配成功的 2D Rectangle 迁移至真实 3D Feature，保留未匹配 2D 候选为 ghost 标注；实现冲突检测、幂等写入、失败回退及帧级诊断/可视化，保障标注结果可审计、可回放。
 - **技术栈：**
-    1. 
-    2. 工具：Git、Docker、Argo、
+    1. **算法：** 基于 VoxelNet + CenterPoint 的3D目标检测、基于ResNet34 + YOLOv5 Head的2D目标检测、Ego输入的全链路坐标变换、Hungarian 全局匹配；
+    2. **开发：** Python、PyTorch、OpenCV、NumPy、SciPy
+    3. **数据：** S3、JSON/YAML 配置化、Kafka
+    4. **工具：** Git、Docker、Argo Workflows
 ### 三维重建 与 3DGS | 2025.10 - 至今
 - 跟踪3DGS相关研究动向，重点关注 **前馈式三维重建** 与 **三维语义分割** 的相关研究工作
 - **研究内容：**
