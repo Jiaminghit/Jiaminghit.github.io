@@ -25,12 +25,23 @@ layout: homepage
     2. **开发：** Python、PyTorch、OpenCV、NumPy、SciPy
     3. **数据：** S3、JSON/YAML 配置化、Kafka
     4. **工具：** Git、Docker、Argo Workflows
+
+
 ### 三维重建 与 3DGS | 2025.10 - 至今
-- 跟踪3DGS相关研究动向，重点关注 **前馈式三维重建** 与 **三维语义分割** 的相关研究工作
+- **研究背景：** 关注 **前馈式三维重建** 与 **三维语义分割** 在航拍场景中的应用；
 - **研究内容：**
-- 
+    1. **3DGS 渲染与训练：** 在 CUDA 层面分析可微高斯渲染管线的前向传播、反向梯度更新及其 Kernel 并行计算逻辑；使用 `gsplat` 完成 3DGS 模型训练，并对新视角渲染结果进行分析。
+    2. **数据采集与几何重建：** 基于 DJI Mavic 4 采集哈工大中俄联合校园区域（约 150 m × 250 m）航拍数据，结合 `ffmpeg` 截取视频帧，并采用传统 SfM 方法完成稀疏点云重建与相机位姿估计。
+    3. **语义分割辅助重建：** 使用经 SAHI 优化的 YOLO 26 对场景行人进行实例分割，生成帧级二值掩码；通过 OpenCV `dilate` 对掩码进行形态学膨胀，为后续 3DGS 训练提供处理后的场景数据。
+    4. **实验环境：** 在 Ubuntu 20.04 环境部署 DUSt3R、MASt3R、VGGT 与 `gaussian-splatting` 等项目，使用 `tmux` 调配单卡/多卡重建与渲染任务；维护 Dell PowerEdge T640 服务器的存储隔离、局域网、iDRAC、NVIDIA 驱动和 Conda 环境。
+
+
 ### YOLO系目标检测 | 2023.10 - 至今
-- 重点关注YOLO系目标检测算法在无人机航拍视角下的应用
+- **研究背景：** 聚焦无人机航拍视角下的 **小目标检测** 与 **模型轻量化** 需求，涉及基于 **YOLOv7** 的目标检测模型。
+- **研究内容：** 
+    1. **构建数据集：** 构建包含 **5 类目标、3224 张图像** 的无人机航拍数据集。
+    2. **改进 YOLOv7：** 引入 **EffectiveSE + BatchNorm** 注意力机制，并结合 **Network Slimming** 通道剪枝；在 mAP 基本持平的前提下，模型参数量降低 **50%**、推理速度提升 **13.4%**。
+    3. 相关成果发表于第 44 届中国控制会议（CCC）：*Toward Optical Military Targets: Benchmark Dataset and Lightweight Detection Model*；毕业设计答辩成绩 **92 分**。
 
 ## 技能
 - 熟练使用Vibe Coding，具备流程性开发经验；
