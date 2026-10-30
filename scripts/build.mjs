@@ -39,7 +39,7 @@ const ui = {
     intro: 'I’m Jiaming, a master’s student in Control Science and Engineering at HIT, graduating in 2028. I work on geometric association and coordinate alignment across aerial and ground views, with experience in algorithm integration, quality evaluation and cloud data production.',
     contact: 'Get in touch', portrait: 'Portrait of Jiaming Yang', portraitNote: 'Master’s student / 2025–2028',
     domains: ['Cross-view geometry', '3D Gaussian Splatting', 'Driving-data production'], research: 'Research', researchNote: 'Connecting views through consistent geometry',
-    current: 'Current research', researchTitle: 'Geometrically consistent<br>aerial–ground reconstruction', pipeline: ['Retrieve', 'Match', 'Associate', 'Align', 'Evaluate'],
+    current: 'Current research', researchTitle: 'Geometrically consistent<br> aerial–ground reconstruction', pipeline: ['Retrieve', 'Match', 'Associate', 'Align', 'Evaluate'],
     pipelineCaption: 'Cross-view alignment · workflow schematic', aerial: 'Aerial views', street: 'Street views', unified: 'Shared coordinates',
     metricLabels: ['ground-view camera poses', 'normalized position RMSE', 'rotation RMSE'], metricNote: 'Reference evaluation on the Horizon-GS Park scene. The 0.286% positional RMSE is normalized by the reference scale.',
     readResearch: 'Method and current progress', undergraduate: 'Undergraduate thesis · Object detection', publication: 'Publication', conference: '44th Chinese Control Conference (CCC)',
