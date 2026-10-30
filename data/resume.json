@@ -1,0 +1,159 @@
+{
+  "updated": "2026-10-30",
+  "email": "jiamingyang_hit@163.com",
+  "github": "https://github.com/Jiaminghit",
+  "locales": {
+    "zh": {
+      "education": [
+        {
+          "date": "2025.08 – 2028.06",
+          "school": "哈尔滨工业大学 （C9，保研）",
+          "degree": "控制科学与工程（硕士）"
+        },
+        {
+          "date": "2020.09 – 2024.06",
+          "school": "哈尔滨工业大学 （985，C9）GPA : 3.84 / 4.0",
+          "degree": "自动化（本科）         "
+        }
+      ],
+      "internship": {
+        "date": "2026.06 – 2026.09",
+        "company": "上海赛力斯凤凰技术有限公司 – 数据部",
+        "role": "自动驾驶数据算法工程师",
+        "background": "项目背景： 参与 SACP智驾数据云平台 多传感器预标注模块建设，面向 相机与激光雷达 采集数据，构建“云端读取—检测与跟踪—后处理—质检—云端回写”的自动化数据生产链路，为人工精修及下游感知模型训练提供动态、静态标注数据。",
+        "bullets": [
+          "动态标注2D质检功能： 面向人工质检前的异常预筛，将相机 2D 检测算法 接入 LiDAR 3D 动态标注链路，完成 3D 框多相机投影、Ego ROI 过滤及 2D–3D 实例关联；基于归一化重叠率与匈牙利算法实现全局匹配，并构建疑似误检、遮挡、视野外三类异常分流机制，设计3D准确率和2D召回率任务级质量指标。在8个测试生产数据CLIPs（3200帧） 中完成 6.46 万组实例匹配，主要动态类别（Car、Truck、Bicycle、Pedestrian）Precision、Recall代理指标分别达到75.0%和84.5%，自动标记 1.21 万个疑似误检 并补充1.18 万个疑似漏检线索，辅助人工聚焦异常结果；",
+          "标注后处理链路：封装基于 CTRV-EKF 与 RTS 平滑的动态轨迹插值、静态目标世界坐标鲁棒聚合算法，并接入动态标注链路，在测试用例中完成 18.92万/18.95万个候选Feature 转换，处理覆盖率达 99.86%；开发静态总标注到逐帧 Ego 标注切帧功能，结合 6DoF 坐标变换、五路点云融合及KD-tree/OBB 筛选生成逐帧真值标注静态目标，将静态目标人工标注工作量压缩至原有的1/44；",
+          "云端生产接入： 完成后处理与质检模块的可插拔集成，适配 S3 结果下载上传、Meta 写回、Kafka 状态上报以及 Docker/Argo 部署，补充异常降级、配置校验和自动化测试，开发功能已接入 SACP 云端生产流程进行约5.9w CLIPs的数据生产。"
+        ]
+      },
+      "research": [
+        {
+          "date": "2026.09 – 至今",
+          "title": "面向空地异构视角的几何一致三维高斯联合重建",
+          "role": "硕士阶段研究方向",
+          "background": "课题背景：面向航拍与街拍图像的三维重建，研究跨视角几何关联与坐标系对齐，为后续 3D Gaussian Splatting 联合建模提供位姿和稀疏几何基础，现阶段聚焦 SfM 子模型重建与对齐。",
+          "bullets": [
+            "跨视角对齐： 构建“检索—匹配—关联—对齐—评测”五阶段流程。集成 MASt3R 检索与匹配，将二维对应关联至 SfM 三维点，结合 RANSAC 初值估计与双向重投影约束的七参数 Sim(3) 优化，实现空地坐标系对齐。在 Horizon-GS 数据集 Park 场景的 5,419 张地面图像对应的相机位姿上完成参考评测，归一化位置 RMSE 为参考尺度的 0.286%，旋转 RMSE 为 0.197°。",
+            "三维高斯重建： 在自采场景复现 3DGS、2DGS，理解可微高斯光栅化的 CUDA 实现。"
+          ]
+        },
+        {
+          "date": "2023.09 – 2024.06",
+          "title": "《基于深度学习的无人机航拍图像目标检测研究》",
+          "role": "本科毕业设计",
+          "background": "课题背景：无人机航拍视角下小目标检测与模型压缩。",
+          "bullets": [
+            "构建包含5类目标、3224张图像的无人机航拍数据集；",
+            "改进YOLOv7模型： 引入“EffectiveSE + BatchNorm”注意力机制 + Network Slimming通道剪枝，在保持mAP相近的前提下，模型参数量降低50%，推理速度提升13.4%；",
+            "研究成果发表于第44届中国控制会议（《Toward Optical Military Targets: Benchmark Dataset and Lightweight Detection Model》）。通过毕业答辩，最终成绩92分"
+          ]
+        }
+      ],
+      "teaching": [
+        {
+          "date": "2024.09 – 2025.07",
+          "school": "新疆维吾尔自治区阿克苏地区库车市第三中学",
+          "role": "高一年级物理教师",
+          "body": "获“优秀青年教师”、“优秀支教教师”荣誉称号，事迹被中国青年网、人民日报报道。"
+        },
+        {
+          "date": "2025.09 – 至今",
+          "school": "哈尔滨工业大学航天学院 – 自动控制理论",
+          "role": "课程助教",
+          "body": ""
+        }
+      ],
+      "skills": [
+        {
+          "label": "编程与开发",
+          "text": "C++，Python；Linux，Docker，Git，CMake；PyTorch，OpenCV；Codex、Claude Code"
+        },
+        {
+          "label": "办公软件",
+          "text": "Visio，Mermaid，XMind"
+        },
+        {
+          "label": "英语",
+          "text": "CET-6，英语口语流利"
+        }
+      ]
+    },
+    "en": {
+      "education": [
+        {
+          "date": "2025.08 – 2028.06",
+          "school": "Harbin Institute of Technology (C9; admitted by recommendation)",
+          "degree": "Control Science and Engineering (Master’s)"
+        },
+        {
+          "date": "2020.09 – 2024.06",
+          "school": "Harbin Institute of Technology (Project 985, C9) GPA: 3.84 / 4.0",
+          "degree": "Automation (Bachelor’s)"
+        }
+      ],
+      "internship": {
+        "date": "2026.06 – 2026.09",
+        "company": "Shanghai SERES Phoenix Technology Co., Ltd. – Data Department",
+        "role": "Autonomous Driving Data Algorithm Engineer",
+        "background": "Project background: Contributed to the multi-sensor pre-annotation module of the SACP intelligent-driving data cloud platform. Built an automated data production pipeline for camera and LiDAR data, covering cloud retrieval, detection and tracking, post-processing, quality inspection, and cloud write-back, to provide dynamic and static annotations for manual refinement and downstream perception model training.",
+        "bullets": [
+          "2D quality inspection for dynamic annotations: Integrated camera 2D detection algorithms into the LiDAR 3D dynamic annotation pipeline to pre-screen anomalies before manual quality inspection. Implemented multi-camera projection of 3D boxes, ego-frame ROI filtering, and 2D–3D instance association; used normalized overlap ratios and the Hungarian algorithm for global matching, and routed anomalies into three categories: suspected false positives, occlusion, and out-of-view cases. Designed task-level quality metrics for 3D precision and 2D recall. Matched 64,600 instance pairs across 8 production-data test CLIPs (3,200 frames), achieving Precision and Recall proxy metrics of 75.0% and 84.5% for the main dynamic classes (Car, Truck, Bicycle, Pedestrian). Automatically flagged 12,100 suspected false positives and identified 11,800 potential missed detections to focus manual review on anomalous results;",
+          "Annotation post-processing pipeline: Encapsulated dynamic trajectory interpolation using CTRV-EKF and RTS smoothing, together with robust aggregation of static objects in world coordinates, and integrated both algorithms into the dynamic annotation pipeline. Converted 189,200 / 189,500 candidate Features in test cases, achieving 99.86% processing coverage. Developed frame-wise slicing of aggregated static annotations into ego-frame annotations, combining 6DoF coordinate transformations, five-stream point-cloud fusion, and KD-tree/OBB filtering to generate per-frame ground-truth static-object annotations, reducing the manual static-object annotation workload to 1/44 of the original level;",
+          "Cloud production integration: Integrated post-processing and quality-inspection modules as pluggable components, supporting result download/upload via S3, Meta write-back, Kafka status reporting, and Docker/Argo deployment. Added exception fallbacks, configuration validation, and automated tests. The implemented features have been integrated into the SACP cloud production workflow to process approximately 59,000 CLIPs."
+        ]
+      },
+      "research": [
+        {
+          "date": "2026.09 – Present",
+          "title": "Joint Reconstruction with Geometrically Consistent 3D Gaussians from Heterogeneous Aerial and Ground Views",
+          "role": "Master’s Research Focus",
+          "background": "Research background: Investigating cross-view geometric association and coordinate-system alignment for 3D reconstruction from aerial and street-view images, providing camera poses and sparse geometry for subsequent joint 3D Gaussian Splatting modeling. The current focus is SfM submodel reconstruction and alignment.",
+          "bullets": [
+            "Cross-view alignment: Built a five-stage “retrieval–matching–association–alignment–evaluation” pipeline. Integrated MASt3R for retrieval and matching, associated 2D correspondences with SfM 3D points, and combined RANSAC initialization with seven-parameter Sim(3) optimization constrained by bidirectional reprojection to align aerial and ground coordinate systems. Evaluated the camera poses corresponding to 5,419 ground-view images against a reference in the Park scene of the Horizon-GS dataset, achieving a normalized positional RMSE of 0.286% of the reference scale and a rotational RMSE of 0.197°.",
+            "3D Gaussian reconstruction: Reproduced 3DGS and 2DGS on self-captured scenes and developed an understanding of the CUDA implementation of differentiable Gaussian rasterization."
+          ]
+        },
+        {
+          "date": "2023.09 – 2024.06",
+          "title": "Deep Learning-Based Object Detection in UAV Aerial Images",
+          "role": "Undergraduate Thesis",
+          "background": "Research background: Small-object detection and model compression for UAV aerial imagery.",
+          "bullets": [
+            "Built a UAV aerial-image dataset comprising 5 target classes and 3,224 images;",
+            "Improved YOLOv7 by introducing an “EffectiveSE + BatchNorm” attention mechanism and Network Slimming channel pruning, reducing model parameters by 50% and increasing inference speed by 13.4% while maintaining comparable mAP;",
+            "Published the research at the 44th Chinese Control Conference (“Toward Optical Military Targets: Benchmark Dataset and Lightweight Detection Model”). Passed the thesis defense with a final grade of 92."
+          ]
+        }
+      ],
+      "teaching": [
+        {
+          "date": "2024.09 – 2025.07",
+          "school": "Kuqa No. 3 Middle School, Aksu Prefecture, Xinjiang Uyghur Autonomous Region",
+          "role": "Grade 10 Physics Teacher",
+          "body": "Received the “Outstanding Young Teacher” and “Outstanding Volunteer Teacher” honors; work featured by China Youth Network and People’s Daily."
+        },
+        {
+          "date": "2025.09 – Present",
+          "school": "School of Astronautics, Harbin Institute of Technology – Automatic Control Theory",
+          "role": "Teaching Assistant",
+          "body": ""
+        }
+      ],
+      "skills": [
+        {
+          "label": "Programming & Development",
+          "text": "C++, Python; Linux, Docker, Git, CMake; PyTorch, OpenCV; Codex, Claude Code"
+        },
+        {
+          "label": "Office Software",
+          "text": "Visio, Mermaid, XMind"
+        },
+        {
+          "label": "English",
+          "text": "CET-6; fluent spoken English"
+        }
+      ]
+    }
+  }
+}
