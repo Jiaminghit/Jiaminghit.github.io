@@ -32,6 +32,6 @@ Open `http://127.0.0.1:4173/` and `/en/`. Check desktop and narrow mobile layout
 
 ## Deployment
 
-GitHub Pages serves the `main` branch from the repository root. `.nojekyll` disables the previous Jekyll template pipeline; no Ruby, package installation or custom GitHub Actions workflow is needed. A push to `main` triggers the repository's Pages deployment. The source image is retained; the page serves a small WebP derivative.
+GitHub Pages serves the `main` branch from the repository root. `.nojekyll` disables the previous Jekyll template pipeline; no Ruby, package installation or custom GitHub Actions workflow is needed. A push to `main` triggers the repository's Pages deployment. The page serves an optimized WebP portrait from the supplied studio photograph.
 
 The previous site is retained in Git history and on the local branch `backup/pre-resume-refresh-20261030`. The original CC0 license remains in `LICENSE`.
