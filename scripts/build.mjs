@@ -28,6 +28,7 @@ const ui = {
     engineering: '工程实践', engineeringNote: '算法、质检与云端生产的完整链路', company: '赛力斯 · 智驾数据平台',
     workLabels: ['动态标注 2D 质检', '标注后处理链路', '云端生产接入'], workNotes: ['Precision / Recall 代理指标', '候选 Feature 处理覆盖率', '已接入生产的 CLIPs'],
     prelabelCaption: '动态预标注流程', prelabelAlt: '动态预标注流程：输入读取、3D 时序处理与 2D 检测缓存、2D–3D 关联质检及结果提交', viewDiagram: '点击图片查看原图（新标签页）',
+    staticMappingCaption: '静态全局标注切帧流程', staticMappingAlt: '静态全局标注切帧流程：构建全局标注索引、逐帧 6DoF 变换、五路点云融合与 KD-tree/OBB 筛选、生成 Ego 标注及云端提交',
     journey: '教育与教学', journeyNote: '技术学习，也关注知识的分享', education: '教育经历', teaching: '教学经历',
     skills: '技术栈', skillsNote: '日常研究与开发使用的工具', skillGroups: ['编程与开发', '图表工具', '英语能力'],
     footerTitle: '欢迎交流研究与工程实践。', footerText: '关于三维视觉、数据工程或合作机会，欢迎通过邮件与我联系。',
@@ -49,6 +50,7 @@ const ui = {
     engineering: 'Engineering', engineeringNote: 'From algorithms to cloud data production', company: 'SERES · Driving-data platform',
     workLabels: ['2D annotation quality inspection', 'Annotation post-processing', 'Cloud production integration'], workNotes: ['Precision / Recall proxy metrics', 'candidate Feature processing coverage', 'CLIPs in the production workflow'],
     prelabelCaption: 'Dynamic pre-annotation pipeline (Chinese)', prelabelAlt: 'Dynamic pre-annotation pipeline: input loading, 3D temporal processing and 2D detection caching, 2D–3D association and quality inspection, and result submission', viewDiagram: 'Click the image to view the full-size diagram in a new tab',
+    staticMappingCaption: 'Frame-wise static annotation mapping pipeline (Chinese)', staticMappingAlt: 'Static annotation mapping pipeline: global annotation indexing, per-frame 6DoF transformations, five-stream point-cloud fusion and KD-tree/OBB filtering, ego-frame annotation generation, and cloud submission',
     journey: 'Education & teaching', journeyNote: 'Learning, building and sharing knowledge', education: 'Education', teaching: 'Teaching',
     skills: 'Technical stack', skillsNote: 'Tools I use in research and development', skillGroups: ['Programming & development', 'Diagramming tools', 'English'],
     footerTitle: 'Let’s exchange ideas.', footerText: 'For conversations about 3D vision, data engineering or collaboration, feel free to get in touch.',
@@ -78,9 +80,15 @@ function page(lang) {
   const master = c.research[0], thesis = c.research[1];
   const publicationTitle = 'Toward Optical Military Targets: Benchmark Dataset and Lightweight Detection Model';
   const tagList = (items) => `<ul class="tags">${items.map((x) => `<li>${escape(x)}</li>`).join('')}</ul>`;
-  const prelabelImage = asset('assets/img/prelabel_pipeline.drawio.png');
   // Preserve the image ratio even when a cached stylesheet lacks the figure rules.
-  const prelabelFigure = `<figure class="work-figure"><a href="${prelabelImage}" target="_blank" rel="noopener" aria-label="${escape(u.viewDiagram)}"><img src="${prelabelImage}" alt="${escape(u.prelabelAlt)}" width="1761" height="531" style="width:100%;height:auto" loading="lazy" decoding="async"></a><figcaption>${escape(u.prelabelCaption)} · ${escape(u.viewDiagram)}</figcaption></figure>`;
+  const workFigure = (filename, caption, alt, width, height) => {
+    const image = asset(`assets/img/${filename}`);
+    return `<figure class="work-figure"><a href="${image}" target="_blank" rel="noopener" aria-label="${escape(u.viewDiagram)}"><img src="${image}" alt="${escape(alt)}" width="${width}" height="${height}" style="width:100%;height:auto" loading="lazy" decoding="async"></a><figcaption>${escape(caption)} · ${escape(u.viewDiagram)}</figcaption></figure>`;
+  };
+  const workFigures = [
+    workFigure('prelabel_pipeline.drawio.png', u.prelabelCaption, u.prelabelAlt, 1761, 531),
+    workFigure('static_mapping_pipeline.drawio.png', u.staticMappingCaption, u.staticMappingAlt, 3676, 1710),
+  ];
   return `<!doctype html>
 <html lang="${u.lang}">
 <head>
@@ -106,7 +114,7 @@ function page(lang) {
 <details class="research-detail"><summary>${u.readResearch}<span aria-hidden="true">+</span></summary><div class="detail-body"><p class="full-project-title">${escape(master.title)}</p>${master.bullets.map((x) => `<p>${escape(x)}</p>`).join('')}</div></details></article>
 <article class="thesis"><div class="entry-meta"><span class="eyebrow">${u.undergraduate}</span><span class="date">${escape(thesis.date)}</span></div><div><h3>${escape(thesis.title.replace(/[《》]/g, ''))}</h3><p>${label(thesis.background)}</p><ul class="clean-bullets">${thesis.bullets.slice(0, 2).map((x) => `<li>${escape(x)}</li>`).join('')}</ul><div class="publication"><span class="publication-label">${u.publication} / CCC</span><h4>${publicationTitle}</h4><p>${u.conference}</p><details><summary>${en ? 'Publication and thesis result' : '论文与毕业设计结果'} <span aria-hidden="true">↗</span></summary><p>${escape(thesis.bullets[2])}</p></details></div></div></article></section>
 
-<section id="engineering" class="engineering-band"><div class="wrap section"><div class="section-heading"><div><span class="section-index">02 / ENGINEERING</span><h2 id="engineering-heading">${u.engineering}</h2></div><p>${u.engineeringNote}</p></div><div class="experience-layout"><aside><span class="date">${escape(c.internship.date)}</span><h3>${u.company}</h3><p class="role">${escape(c.internship.role)}</p><p class="company-full">${escape(c.internship.company)}</p>${tagList(['Python', 'S3', 'Kafka', 'Docker', 'Argo'])}</aside><div><p class="experience-intro">${label(c.internship.background)}</p><div class="work-list">${c.internship.bullets.map((x, i) => `<details class="work-item"${i === 0 ? ' open' : ''}><summary><span class="work-number">0${i + 1}</span><span class="work-summary"><strong>${u.workLabels[i]}</strong><span>${['75.0% / 84.5%', '99.86%', '≈59,000'][i]} <small>${u.workNotes[i]}</small></span></span><span class="expand-sign" aria-hidden="true">+</span></summary><div class="detail-body"><p>${label(x)}</p>${i === 0 ? prelabelFigure : ''}</div></details>`).join('')}</div></div></div></div></section>
+<section id="engineering" class="engineering-band"><div class="wrap section"><div class="section-heading"><div><span class="section-index">02 / ENGINEERING</span><h2 id="engineering-heading">${u.engineering}</h2></div><p>${u.engineeringNote}</p></div><div class="experience-layout"><aside><span class="date">${escape(c.internship.date)}</span><h3>${u.company}</h3><p class="role">${escape(c.internship.role)}</p><p class="company-full">${escape(c.internship.company)}</p>${tagList(['Python', 'S3', 'Kafka', 'Docker', 'Argo'])}</aside><div><p class="experience-intro">${label(c.internship.background)}</p><div class="work-list">${c.internship.bullets.map((x, i) => `<details class="work-item"${i === 0 ? ' open' : ''}><summary><span class="work-number">0${i + 1}</span><span class="work-summary"><strong>${u.workLabels[i]}</strong><span>${['75.0% / 84.5%', '99.86%', '≈59,000'][i]} <small>${u.workNotes[i]}</small></span></span><span class="expand-sign" aria-hidden="true">+</span></summary><div class="detail-body"><p>${label(x)}</p>${workFigures[i] ?? ''}</div></details>`).join('')}</div></div></div></div></section>
 
 <section id="background" class="section wrap"><div class="section-heading"><div><span class="section-index">03 / BACKGROUND</span><h2>${u.journey}</h2></div><p>${u.journeyNote}</p></div><div class="background-grid"><div><h3 class="column-label">${u.education}</h3>${c.education.map((x) => `<article class="timeline-item"><span class="date">${escape(x.date)}</span><h4>${escape(x.school)}</h4><p>${escape(x.degree)}</p></article>`).join('')}</div><div><h3 class="column-label">${u.teaching}</h3>${c.teaching.map((x) => `<article class="timeline-item"><span class="date">${escape(x.date)}</span><h4>${escape(x.role)}</h4><p>${escape(x.school)}</p>${x.body ? `<p class="teaching-note">${escape(x.body)}</p>` : ''}</article>`).join('')}</div></div></section>
 
