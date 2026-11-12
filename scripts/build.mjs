@@ -1,9 +1,11 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const resume = JSON.parse(await readFile(path.join(root, 'data/resume.json'), 'utf8'));
+const stylesheetVersion = createHash('sha256').update(await readFile(path.join(root, 'assets/css/home.css'))).digest('hex').slice(0, 12);
 const escape = (value) => String(value).replace(/[&<>"']/g, (s) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[s]));
 const arrow = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
 const download = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v5h14v-5"/></svg>';
@@ -77,7 +79,8 @@ function page(lang) {
   const publicationTitle = 'Toward Optical Military Targets: Benchmark Dataset and Lightweight Detection Model';
   const tagList = (items) => `<ul class="tags">${items.map((x) => `<li>${escape(x)}</li>`).join('')}</ul>`;
   const prelabelImage = asset('assets/img/prelabel_pipeline.drawio.png');
-  const prelabelFigure = `<figure class="work-figure"><a href="${prelabelImage}" target="_blank" rel="noopener" aria-label="${escape(u.viewDiagram)}"><img src="${prelabelImage}" alt="${escape(u.prelabelAlt)}" width="1761" height="531" loading="lazy" decoding="async"></a><figcaption>${escape(u.prelabelCaption)} · ${escape(u.viewDiagram)}</figcaption></figure>`;
+  // Preserve the image ratio even when a cached stylesheet lacks the figure rules.
+  const prelabelFigure = `<figure class="work-figure"><a href="${prelabelImage}" target="_blank" rel="noopener" aria-label="${escape(u.viewDiagram)}"><img src="${prelabelImage}" alt="${escape(u.prelabelAlt)}" width="1761" height="531" style="width:100%;height:auto" loading="lazy" decoding="async"></a><figcaption>${escape(u.prelabelCaption)} · ${escape(u.viewDiagram)}</figcaption></figure>`;
   return `<!doctype html>
 <html lang="${u.lang}">
 <head>
@@ -86,7 +89,7 @@ function page(lang) {
   <link rel="canonical" href="https://jiaminghit.github.io${home}">
   <link rel="alternate" hreflang="zh-CN" href="https://jiaminghit.github.io/"><link rel="alternate" hreflang="en" href="https://jiaminghit.github.io/en/"><link rel="alternate" hreflang="x-default" href="https://jiaminghit.github.io/">
   <meta property="og:type" content="profile"><meta property="og:title" content="${escape(u.title)}"><meta property="og:description" content="${escape(u.description)}"><meta property="og:url" content="https://jiaminghit.github.io${home}"><meta property="og:image" content="https://jiaminghit.github.io/assets/img/portrait.webp">
-  <link rel="icon" href="${asset('assets/img/monogram.svg')}" type="image/svg+xml"><link rel="stylesheet" href="${asset('assets/css/home.css')}">
+  <link rel="icon" href="${asset('assets/img/monogram.svg')}" type="image/svg+xml"><link rel="stylesheet" href="${asset('assets/css/home.css')}?v=${stylesheetVersion}">
   <script src="${asset('assets/js/home.js')}" defer></script>
   <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Person', name: 'Jiaming Yang', alternateName: '杨佳明', url: 'https://jiaminghit.github.io/', sameAs: [resume.github], email: `mailto:${resume.email}`, affiliation: { '@type': 'CollegeOrUniversity', name: 'Harbin Institute of Technology' }, knowsAbout: ['3D computer vision', 'SfM', '3D Gaussian Splatting', 'Data engineering'] })}</script>
 </head>
